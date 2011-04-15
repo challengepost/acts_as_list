@@ -52,7 +52,7 @@ module ActsAsList
         include ActsAsList::InstanceMethods
 
         def acts_as_list_class
-          self.class.parent
+          (self.respond_to?('position_by')) ? self.position_by : self.class
         end
 
         def position_column
